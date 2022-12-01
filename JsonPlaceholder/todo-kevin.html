@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li> <a href="index.html">Home</a></li>
+            <li> <a href="todo-kevin.html" style="color: palevioletred;">To Do</a></li>
+            <li> <a href="users.html">Users</a></li>
+        </ul>
+    </nav>
+    <form>
+        <label for="toDoID">ToDo ID</label>
+        <input id="toDoId" type="text">
+        <input id="toDoBtn" type="button" value="Find ToDo By ID">
+    </form>
+    <div>
+        <p id="messageText"></p>
+    </div>
+
+    <script>
+        // grab all my DOM nodes
+        // get the button
+        let todoBtn = document.getElementById('toDoBtn');
+        // get the paragraph that will hold the todo
+        let messageText = document.getElementById('messageText');
+        // get the value typed into the text input field
+        let todoId = document.getElementById('toDoId');
+
+        todoBtn.addEventListener('click', getTodo);
+
+        function getTodo() {
+            console.log('it works');
+            let todoID = toDoId.value;
+            console.log(todoID);
+            let fetchEndpoint = `http://jsonplaceholder.typicode.com/todos/${todoID}`;
+            fetch(fetchEndpoint)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    let completed = data.completed;
+                    let title = data.title;
+                    let userId = data.userId;
+                    messageText.innerHTML = `Did User with userID of ${todoID} complete todo: ${title}? ${completed}`;
+                });
+        }
+
+    </script>
+</body>
+
+</html>

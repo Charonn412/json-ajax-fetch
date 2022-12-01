@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li> <a href="index.html">Home</a></li>
+            <li> <a href="todo.html" style="color: palevioletred;">To Do</a></li>
+            <li> <a href="users.html">Users</a></li>
+        </ul>
+    </nav>
+
+    <form action="GET">
+        
+    Enter ID <input type="text"  id="inputTag">
+    <button id="inputBtn" type="button">Sumbit</button>
+
+    </form>
+    <p id="dataMessage"></p>
+    <div>
+
+    </div>
+    <script>
+        let input = document.getElementById('inputTag');
+        let btn = document.getElementById('inputBtn');
+        let message = document.getElementById('dataMessage');
+        let inputValue = 
+        btn.addEventListener("click", retrieveID)
+
+        function retrieveID
+        
+
+        fetch('http://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                
+                
+            }
+
+        });
+
+        // fetch('http://jsonplaceholder.typicode.com/users') //endpoint url
+        // .then(response => response.json())
+        // .then(data => {
+        //     for (let i = 0; i < data.length; i++) {
+        //         let opt = document.createElement("option");
+        //         let text = opt.textContent = data[i].email;
+        //         opt.value = data[i].email;
+        //         element.appendChild(opt);
+                
+        //     }
+        // });
+    </script>
+</body>
+
+</html>
